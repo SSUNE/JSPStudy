@@ -1,0 +1,36 @@
+
+1. 액션태그로 사용되는 el
+◼︎ before
+    <% out.println("hello"); %>
+    <%="hello"
+    ${"hello"}
+
+◼︎ after
+    ${"Hello"}
+2. 반복문, 조건문 등의 기본기능 구현 jstl
+◼︎ before
+    <% if(){} %>
+
+◼︎ after
+    <c:if test="${param.color==1}">
+    처리되어야할일
+    </c:if>
+
+3. 설치
+http://jakarta.apache.org
+-> 왼쪽 Taglibs 클릭
+-> Apache Standard Taglib 링크 클릭
+-> Standard 1.1 JSTL 1.1
+-> binaries/ 클릭
+-> jakarta-taglibs-standard-1.1.1.zip 다운
+
+4. jstl 라이브러리
+    - core : 기본적인 기능제공
+    - fmt : format의 약자로 형식에 관련된 기능제공
+    - xml : xml 처리관리
+    - sql : sql 처리관련된 기능
+
+
+    ◻︎ 1. 변수, 출력, 삭제 : set, out, remove
+    ◻︎ 2. if                        c:if test=""
+    ◻︎ 3. choose when otherwise    c:choose

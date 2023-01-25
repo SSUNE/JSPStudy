@@ -1,0 +1,64 @@
+1. 전체페이지가 보인다.
+   1-1. 글쓰기 버튼을 클릭하면 글쓰기 페이지로 넘어간다.
+   1-2. 글제목을 클릭하면 해당번호의 글이 보인다.
+
+   ㅁ public ArrayList<BDTO> listAll()
+   ㅁ sql1> 최신글이 맨위로 올라가 있는 전체 리스트가 보인다
+      "select * from mvcboard3 order by bno desc";
+      or
+      "select * from mvcboard3 order by bdate desc";
+
+   return : ArrayList<BDTO>
+   parameter : x
+
+
+2. 데이터 등록
+   ㅁ public int create (BDTO dto)
+   ㅁ sql2> 이름, 비밀번호,제목,내용을 입력받아 입력버튼을 누르면 데이터가 저장된다.
+   "insert into mvcboard3 (bno, bname, bpass, btitle, bcontent, bip ) values (seq_board3.nextval,?,?,?,?,?)";
+   insert into mvcboard3 (bno, bname, bpass, btitle, bcontent, bip ) values (seq_board3.nextval,'first','1111','title','content','127.0.0.1')";
+
+   return : int
+   parameter : BDTO dto
+
+
+3. 상세보기페이지
+   ㅁ public int update_hit(BDTO dto)
+   ㅁ sql3> 상세보기 조회수 올리기
+   "update mvcboard3 set bhit=bhit+1 where bno = ?";
+
+   return : int
+   parameter : BDTO dto
+
+   ㅁ public BDTO read(BDTO dto) ※ 겹침
+   ㅁ sql4> 해당글의 데이터(조회수, 이름, 제목, 내용)가 보인다.
+    "select * from mvcboard3 where bno = ?";
+
+   return : BDTO dto
+   parameter : BDTO dto
+
+4. 수정하기
+   ㅁ public BDTO read(BDTO dto) ※ 겹침
+   ㅁ sql5> 상세보기페이지에서 수정하기 버튼을 누르면 해당글의 수정페이지(이름, 제목, 내용)가 나온다.
+   String sql = "select * from mvcboard3 where bno = ?";
+
+   >>>> sql4, sql5가 겹쳐서 하나로
+
+   return : BDTO dto
+   parameter : BDTO dto
+
+   ㅁ public int update(BDTO dto)
+   ㅁ sql6> 수정하기페이지에서 수정하기 버튼을 누르면 해당글 번호의 비번이 맞으면 제목과 내용 데이터가 수정된다.
+   "update mvcboard3 set btitle= ?, bcontent= ? where bno =? and bpass=?";
+
+   return : BDTO dto
+   parameter : BDTO dto
+
+
+5. 삭제하기
+   ㅁ public int delete(BDTO dto)
+   ㅁ sql7> 해당글번호의 비번이 맞으면 글이 삭제된다.
+    "delete from mvcboard3 where bpass = ? and bno = ?";
+
+   return : BDTO dto
+   parameter : BDTO dto

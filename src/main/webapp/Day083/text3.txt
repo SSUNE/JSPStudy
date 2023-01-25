@@ -1,0 +1,14 @@
+<table  class="table table-striped">
+<thead>
+			<tr><th scope="col">NAME</th><th scope="col">AGE</th>
+			      <th scope="col">ADDRESS</th><th scope="col">MOBILE</th>
+		</thead>
+			<tbody>
+                	<tr>
+        	            <td>아이언맨</td>
+        	            <td>20</td>
+        	            <td>서울시 강남구 역삼동</td>
+        	            <td>010-111-1111</td>
+                	</tr>
+        		</tbody>
+</table>

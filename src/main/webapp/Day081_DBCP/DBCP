@@ -1,0 +1,84 @@
+==================================================
+   1. DBCP 개요
+==================================================
+- 커넥션 풀
+1) JDBC 를 통해서 DB에 연결하기위해 드라이버(Driver)로드
+   커넥션(Connection) 객체를 받아서 사용함.
+2) JDBC 를 사용하면 사용자가 요청을 할때마다 매번 드라이버를 로드하고
+  커넥션 캑체를 생성하여 연결하고 종료하기때문에 매우 비효율적
+3) 웹페이지를 접속자수가 많으면 커넥션을 그만큼 걸어주어야하하기때문에
+[서버과부하]발생 - 서버가 다운되는 현상까지 발생함.
+- 웹컨테이너가 실행되면서 커넥션 객체를 미리 풀(POOL)에 생성해 두기
+- 미리 생성 해두기 때문에 데이터베이스 과부하 줄이기
+
+   ※   jdbc : java database connectivity - 자바 데이터베이스 연결
+   ※   dbcp : database connection pool
+    java기반의 웹서비스에서 많이 사용하고 있는 프레임워크들의 커넥션은 dbcp사용함
+
+   ----->request1         [      스레드생성 - 서블릿객체      ]
+   ----->request2         [      스레드생성 - 서블릿객체      ]
+   ----->request3         [      스레드생성 - 서블릿객체      ]
+   ----->request4         [      스레드생성 - 서블릿객체      ]
+
+
+   ----->request5   (대기)
+
+   request1이 끝나면 대기하던 request5의 요청을 스레드가 처리함.
+
+==================================================
+   2. 실습
+==================================================
+가. 파일다운로드
+   1) apache.org
+   2) 검색 : commons
+   3) 3개항목 : dbcp, pool, collections
+
+      commons-dbcp2-2.8.0-bin
+      commons-pool2-2.9.0-bin
+      commons-collections4-4.4-bin
+   4) [WebContent] - [ WEB-INF] - [lib]
+
+나. 파일 테스트
+   1) tomcat.apache.org
+   2) Documentation - Tomcat8.5
+   3) 검색 : User Guide - 검색 : jdbc   10)
+
+  ■ 1. oracle
+   [Server.xml]
+   <Resource name="jdbc/myoracle" auth="Container"
+              type="javax.sql.DataSource" driverClassName="oracle.jdbc.OracleDriver"
+              url="jdbc:oracle:thin:@127.0.0.1:1521:xe"
+              username="test" password="test" maxTotal="20" maxIdle="10"
+              maxWaitMillis="-1"/>
+    [web.xml]
+    <resource-ref>
+    <description>Oracle Datasource example</description>
+    <res-ref-name>jdbc/myoracle</res-ref-name>
+    <res-type>javax.sql.DataSource</res-type>
+    <res-auth>Container</res-auth>
+   </resource-ref>
+
+  ■ 2. mysql
+    [Server.xml] url / username / password
+    <Resource name="jdbc/TestDB" auth="Container" type="javax.sql.DataSource"
+               maxTotal="100" maxIdle="30" maxWaitMillis="10000"
+               username="root" password="1234" driverClassName="com.mysql.jdbc.Driver"
+               url="jdbc:mysql://localhost:3306/db0"/>
+     [web.xml]
+     <resource-ref>
+         <description>DB Connection</description>
+         <res-ref-name>jdbc/TestDB</res-ref-name>
+         <res-type>javax.sql.DataSource</res-type>
+         <res-auth>Container</res-auth>
+     </resource-ref>
+
+
+
+톰캣폴더 - 서버.xml
+<Context docBase="Project_JSP_2" path="/Project_JSP_2" reloadable="true" source="org.eclipse.jst.jee.server:Project_JSP_2">
+         <Resource name="jdbc/myoracle" auth="Container"
+                 type="javax.sql.DataSource" driverClassName="oracle.jdbc.OracleDriver"
+                 url="jdbc:oracle:thin:@127.0.0.1:1521:xe"
+                 username="ouser" password="1111" maxTotal="20" maxIdle="10"
+                 maxWaitMillis="-1"/>
+      </Context>

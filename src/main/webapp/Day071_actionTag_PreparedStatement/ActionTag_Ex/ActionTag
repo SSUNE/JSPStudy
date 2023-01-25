@@ -1,0 +1,35 @@
+#ActionTag
+    - jsp페이지에서 자바코드 분리
+    - 사용자에게 보여지는 프로젠테이션(view)부분과
+      사용자의 요청을 기다리는 비지니스로직(controller - 프로그램)을 분리하는 것이 가능
+
+      ◼︎ 페이지 흐름제어 (forward/include)
+      ◼ 자바빈 사용 (useBean)
+
+      1. 코드 양 줄이기
+      2. 가독성 높임
+
+      jsp:include 페이지 삽입 - 모듈화
+      jsp:forward 다른사이트 이동시 주소가 안 바뀜
+      jsp:param 파라미터 던지기
+      jsp:useBean 빈 생성, 사용(dto)
+      jsp:setProperty 빈 속성값 할당
+      jsp:getProperty 빈 속성 값 가져오기
+
+      1. 자바빈(JavaBean)의 개요
+          자바빈설계규약
+          - getter/setter
+          - 생성자는 파라미터가 존재하지 않아야함.
+      2. jsp에서 javabean 사용하기
+
+      <jsp:userBean id="빈이름" class="자바빈클래스명" scope="사용범위" />
+      - id : jsp 페이지에서 자바빈 객체 생성위해 사용
+      - class : 클래스명
+      - scope : 사용범위 - page, request, session, application 기본값은 : page
+      A a1 = new A();
+
+      <jsp:setProperty name="빈이름" property="속성설정" value="설정값" />
+      a1.setName("ssune");
+
+      <jsp:setProperty name="빈이름" property="속성설정"  />
+      a1.getName();

@@ -1,0 +1,32 @@
+## servlet
+   ㅁ 서블릿 컨테이너
+   URL : 1) https://www.naver.com/logo.png
+      - Uniform Resource Locator
+      - 자원 위치 접근(어디에 뭐가 있는지 알아냄)
+
+   URI : 2) https://www.naver.com/logo
+      - Uniform Resource Identifier(식별자)
+      - 자원 식별자로 접근(logo가 어느위치에 들어가는지 모르는 아이)
+
+   1)https://www.naver.com/logo.png
+   2)https://www.naver.com/logo
+
+   1. serclet특징
+   - 동적 웹어플리케이션 컴포넌트
+    소프트웨어 개발을 마치 레고(lego) 블록을 쌓듯이 쉽게 할 수 있도록 하는 기술을 말한다.
+    즉, 기존의 코드방학에 의한 개발에서 벗어나 소프트웨어 구성단위(module)를 미리 만든 뒤 필요한 응용 기술을 개발 할 때 이 모듈을 조립하는 기술을 말한다
+
+    - java 확장자
+    - 클라이언트의 요청에 동적으로 작동하고 응답은 html + java(jsp)로 이동
+    - java thread이용하여 동작
+    - MVC패턴에서 CONTROOLER로 이동
+        M : Model(db, oracle, mysql)
+        view : (html+java : jsp - 사용자가 사용하는 화면)
+        C : Controller (servlet, java)
+   2. 서블릿 동작원리
+   [HOMEPAGE] (request) -> 1. controller(servlet) 무엇을 요청했는지 파악
+                                해당작업을 해줄 수 있는 컴포넌트에게 넘기기(model)
+                           2. model : 해당하는 작업을 가공해서 controller에게 주기
+              (response)<- 3. view(jsp)
+
+## oracle - rollup

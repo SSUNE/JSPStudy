@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!--<faces-config xmlns="http://java.sun.com/xml/ns/javaee"-->
+<!--              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+<!--              xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"-->
+<!--              version="2.0">-->
+<!--</faces-config>-->
+
+<herostore>
+    <menu>
+        <name>캡틴아메리카</name>
+        <img>1.jpg</img>
+        <year>2014</year>
+        <character>방패아재</character>
+    </menu>
+
+    <menu>
+        <name>헐크</name>
+        <img>2.jpg</img>
+        <year>2015</year>
+        <character>초록인간</character>
+    </menu>
+
+    <menu>
+        <name>아이언맨</name>
+        <img>3.jpg</img>
+        <year>2016</year>
+        <character>부잨ㅋㅋ</character>
+    </menu>
+</herostore>
